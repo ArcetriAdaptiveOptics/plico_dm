@@ -1,7 +1,19 @@
 # PALPAO: deformable mirror controller 
 
+[![Build Status][travis]][travislink]  [![Coverage Status][coveralls]][coverallslink]  [![PyPI version][pypiversion]][pypiversionlink]
+
 This is part a component of the Plico framework to control DMs (Alpao, MEMS)
 
+
+[plico]: https://github.com/lbusoni/plico
+[pysilico]: https://github.com/lbusoni/pysilico
+[allied]: https://www.alliedvision.com
+[travis]: https://travis-ci.com/lbusoni/palpao.svg?branch=master "go to travis"
+[travislink]: https://travis-ci.com/lbusoni/palpao
+[coveralls]: https://coveralls.io/repos/github/lbusoni/palpao/badge.svg?branch=master "go to coveralls"
+[coverallslink]: https://coveralls.io/github/lbusoni/palpao
+[pypiversion]: https://badge.fury.io/py/palpao.svg
+[pypiversionlink]: https://badge.fury.io/py/palpao
 
 ## Installation
 
