@@ -1,8 +1,8 @@
 
-__version__= "$Id: timeout.py 25 2018-01-26 19:00:40Z lbusoni $"
 
 
 class Timeout(object):
+    GENERIC_COMMAND= 3.
     MIRROR_GET_STATUS= 3.
-    MIRROR_GET_ZONAL_COMMAND= 3.
-    MIRROR_SET_COMMAND= 3.
+    MIRROR_GET_SHAPE= 3.
+    MIRROR_SET_SHAPE= 3.

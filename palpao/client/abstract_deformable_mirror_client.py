@@ -19,7 +19,7 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
 
 
     Assume a modal control of the DM.
-    TBC: Assume the DM can apply an pure optical tip and tilt
+
     """
 
     @abc.abstractmethod
@@ -27,12 +27,13 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
         """ Number of modes of the deformable mirror
 
         Return the number of modes of the deformable mirror.
-        This is the number of degrees of freedom. 
+        number of degrees of freedom.
 
         Return:
             numberOfModes (int): the number of modes of the deformable mirror.
         """
         assert False
+
 
     @abc.abstractmethod
     @returnsNone
@@ -51,52 +52,65 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
 
 
     @abc.abstractmethod
-    def loadShapeSequence(self, shapeSequence):
-        """ Load a shape sequence to be periodically applied to the mirror
+    @returnsNone
+    def getShape(self):
+        """ Get Deformable Mirror Shape
+
+        Send to the controller the request to set the DM shape
+
+        Return:
+            shape (:obj:ndarray): an array containing the measured value for the actuators/modes
+                The size of the array must be equal to the number of modes of the DM
+
+        The value are measured if the DM has an internal metrology on position
+        The shape sequence is taken into account.
+
+        """
+        assert False
+
+
+    @abc.abstractmethod
+    def loadShapeSequence(self, shapeSequence, timeStepInSeconds):
+        """ Load a shape sequence to be applied to the mirror
+
+        Every element of the sequence correspond to a DM shape
+        After timeStepInSeconds the next element of the sequence is applied
+        The sequence is executed ciclycally until 
 
         The shape sequence is added to the current shape
+        The shape sequence is applied as a circular buffer 
 
         Parameters:
             shapeSequence (:obj:ndarray): an array containing the shape sequence value for the actuators/modes
                 The array size is (nModes, nTimeSteps)
-
+            timeStepInSeconds (float): updating interval of sequence.
+                Every timeStepInSeconds the controller applies the next column of shapeSequence
         """
         assert False
-    
-
 
 
     @abc.abstractmethod
     @returnsNone
-    def applyZonalCommand(self, actuatorPosition):
-        assert False
-
-
-    @abc.abstractmethod
-    def getZonalCommand(self):
-        assert False
-
-
-    @abc.abstractmethod
-    def offsetZonalCommand(self, actuatorOffset):
+    def startShapeSequence(self):
         assert False
 
 
     @abc.abstractmethod
     @returnsNone
-    def applyModalCommand(self, actuatorPosition):
+    def stopShapeSequence(self):
         assert False
 
 
     @abc.abstractmethod
-    def getModalCommand(self):
+    @returnsNone
+    def enableControlLoop(self, boolEnableOrDisable):
+        """ Enable control loop
+
+        If the deformable mirror controller has position feedback, 
+        enable the position control loop
+        Else, raise TypeError
+        """
         assert False
-
-
-    @abc.abstractmethod
-    def offsetModalCommand(self, actuatorOffset):
-        assert False
-
 
 
     @abc.abstractmethod
