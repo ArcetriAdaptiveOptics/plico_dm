@@ -91,7 +91,8 @@ class DeformableMirrorClientTest(unittest.TestCase):
 
 
     def testGetStatus(self):
-        wantedInstrumentStatus= DeformableMirrorStatus('foo', 'tux')
+        wantedInstrumentStatus= DeformableMirrorStatus(
+            12, 34, 'foo', 'tux')
         self._rpc.wantsPickable(wantedInstrumentStatus)
 
         timeoutInSec= 22

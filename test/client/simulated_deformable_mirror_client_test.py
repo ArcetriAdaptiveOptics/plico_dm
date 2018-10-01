@@ -16,7 +16,7 @@ class SimulatedDeformableMirrorClientTest(unittest.TestCase):
 
 
     def testGetNumberOfModes(self):
-        nModes= self.dm.numberOfModes()
+        nModes= self.dm.getNumberOfModes()
         self.assertEqual(
             SimulatedDeformableMirrorClient.N_MODES, nModes)
 
