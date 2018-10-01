@@ -1,12 +1,15 @@
 
-__version__= "$Id: deformable_mirror_status.py 26 2018-01-26 19:06:25Z lbusoni $"
 
 
 class DeformableMirrorStatus(object):
 
     def __init__(self,
+                 numberOfActuators,
+                 numberOfModes,
                  actuatorCommands,
                  commandCounter):
+        self._numberOfActuators= numberOfActuators
+        self._numberOfModes= numberOfModes
         self._actuatorCommands= actuatorCommands
         self._commandCounter= commandCounter
 
@@ -17,3 +20,11 @@ class DeformableMirrorStatus(object):
 
     def actuatorCommands(self):
         return self._actuatorCommands
+
+
+    def numberOfActuators(self):
+        return self._numberOfActuators
+
+
+    def numberOfModes(self):
+        return self._numberOfModes
