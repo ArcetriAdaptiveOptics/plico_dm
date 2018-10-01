@@ -78,7 +78,7 @@ class SimulatedDeformableMirrorClient(AbstractDeformableMirrorClient):
 
 
     @override
-    def numberOfModes(self, timeoutInSec=Timeout.GENERIC_COMMAND):
+    def getNumberOfModes(self, timeoutInSec=Timeout.GENERIC_COMMAND):
         return self.N_MODES
 
 

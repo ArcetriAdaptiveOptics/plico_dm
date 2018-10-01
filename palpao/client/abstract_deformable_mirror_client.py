@@ -23,7 +23,7 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
     """
 
     @abc.abstractmethod
-    def numberOfModes(self):
+    def getNumberOfModes(self):
         """ Number of modes of the deformable mirror
 
         Return the number of modes of the deformable mirror.

@@ -96,11 +96,8 @@ class DeformableMirrorClient(AbstractDeformableMirrorClient,
 
 
     @override
-    def numberOfModes(self, timeoutInSec=Timeout.GENERIC_COMMAND):
-        return self._rpcHandler.sendRequest(
-            self._requestSocket,
-            'numberOfModes', [],
-            timeout=timeoutInSec)
+    def getNumberOfModes(self, timeoutInSec=Timeout.GENERIC_COMMAND):
+        return int(self.getStatus(timeoutInSec).numberOfModes())
 
 
     @override
