@@ -5,6 +5,7 @@ from palpao.calibration.abstract_calibration_manager import \
     AbstractCalibrationManager
 from plico.utils.decorator import override, returnsNone, returns, cacheResult
 from palpao.types.modal_basis import ModalBasis
+import numpy
 from plico.utils.fits_file_based_calibration_manager \
     import FitsFileBasedCalibrationManager
 
@@ -75,3 +76,28 @@ class CalibrationManager(AbstractCalibrationManager,
     def loadPiTipTiltCalibration(self, serialNumber):
         pic= self._loadPiTipTiltCalibrationModule()
         return pic.getCalibrationFor(serialNumber)
+
+
+    def getZonalCommandFileName(self, tag):
+        return os.path.join(self._calibRootDir,
+                            "zonal_command",
+                            "%s.fits" % tag)
+
+
+    @override
+    @returnsNone
+    def saveZonalCommand(self, tag, zonalCommand):
+        self._checkTag(tag)
+        fileName= self.getZonalCommandFileName(tag)
+        self._createFoldersIfMissing(fileName)
+        pyfits.writeto(fileName,
+                       zonalCommand,
+                       clobber=False)
+
+
+    @override
+    @returns(numpy.ndarray)
+    def loadZonalCommand(self, tag):
+        self._checkTag(tag)
+        fileName= self.getZonalCommandFileName(tag)
+        return pyfits.getdata(fileName)

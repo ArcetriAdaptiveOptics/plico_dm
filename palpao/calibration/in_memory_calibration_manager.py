@@ -2,16 +2,15 @@ from plico.utils.decorator import override, returnsNone, returns
 from palpao.types.modal_basis import ModalBasis
 from palpao.calibration.abstract_calibration_manager import \
     AbstractCalibrationManager
+import numpy
 
-
-
-__version__= "$Id: in_memory_calibration_manager.py 27 2018-01-27 08:48:07Z lbusoni $"
 
 
 class InMemoryCalibrationManager(AbstractCalibrationManager):
 
     def __init__(self):
         self._modalBasisDict= {}
+        self._zonalCommandDict= {}
 
 
     @override
@@ -24,3 +23,15 @@ class InMemoryCalibrationManager(AbstractCalibrationManager):
     @returns(ModalBasis)
     def loadModalBasis(self, tag):
         return self._modalBasisDict[str(tag)]
+
+
+    @override
+    @returnsNone
+    def saveZonalCommand(self, tag, zonalCommand):
+        self._zonalCommandDict[tag]= zonalCommand
+
+
+    @override
+    @returns(numpy.ndarray)
+    def loadZonalCommand(self, tag):
+        return self._zonalCommandDict[str(tag)]

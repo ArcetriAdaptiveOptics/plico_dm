@@ -6,7 +6,6 @@ from palpao.calibration.in_memory_calibration_manager import \
     InMemoryCalibrationManager
 from palpao.types.modal_basis import ModalBasis
 
-__version__= "$Id: in_memory_calibration_manager_test.py 26 2018-01-26 19:06:25Z lbusoni $"
 
 
 class InMemoryCalibrationManagerTest(unittest.TestCase):
@@ -22,6 +21,14 @@ class InMemoryCalibrationManagerTest(unittest.TestCase):
         storedObject= self.calibMgr.loadModalBasis(tag)
         self.assertEqual(storedObject, originalObject)
 
+
+    def testZonalCommandStorage(self):
+        tag= "20181222_110000"
+        originalObject= np.arange(8)
+        self.calibMgr.saveZonalCommand(tag, originalObject)
+        storedObject= self.calibMgr.loadZonalCommand(tag)
+        self.assertTrue(np.array_equal(
+            storedObject, originalObject))
 
 
 if __name__ == "__main__":

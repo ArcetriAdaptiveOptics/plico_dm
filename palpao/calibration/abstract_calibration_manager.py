@@ -2,9 +2,7 @@ import abc
 from plico.utils.decorator import returns, returnsNone
 from palpao.types.modal_basis import ModalBasis
 from six import with_metaclass
-
-
-__version__= "$Id: abstract_calibration_manager.py 27 2018-01-27 08:48:07Z lbusoni $"
+import numpy
 
 
 
@@ -22,3 +20,14 @@ class AbstractCalibrationManager(with_metaclass(abc.ABCMeta, object)):
         assert False
 
 
+
+    @abc.abstractmethod
+    @returns(numpy.ndarray)
+    def loadZonalCommand(self, tag):
+        assert False
+
+
+    @abc.abstractmethod
+    @returnsNone
+    def saveZonalCommand(self, tag, zonalCommand):
+        assert False

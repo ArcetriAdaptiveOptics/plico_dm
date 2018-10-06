@@ -66,6 +66,18 @@ class CalibrationManagerTest(unittest.TestCase):
             self.calibMgr.loadModalBasis, "")
 
 
+    def testStorageOfZonalCommand(self):
+        result= np.random.rand(100)
+
+        self.calibMgr.saveZonalCommand("abc", result)
+        self.assertTrue(os.path.exists(
+            os.path.join(self.CALIB_DIR, "zonal_command", "abc.fits")))
+
+        loaded= self.calibMgr.loadZonalCommand("abc")
+        self.assertTrue(np.array_equal(
+            result, loaded))
+
+
 
 
 
