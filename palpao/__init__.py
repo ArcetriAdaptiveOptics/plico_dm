@@ -14,7 +14,7 @@ defaultConfigFilePath= _getDefaultConfigFilePath()
 
 
 
-def DeformableMirror(hostname, port):
+def deformableMirror(hostname, port):
 
     from palpao.client.deformable_mirror_client import DeformableMirrorClient
     from plico.rpc.zmq_remote_procedure_call import ZmqRemoteProcedureCall
