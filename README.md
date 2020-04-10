@@ -1,17 +1,18 @@
 # PALPAO: deformable mirror controller 
 
-[![Build Status][travis]][travislink]  [![Coverage Status][coveralls]][coverallslink]  [![PyPI version][pypiversion]][pypiversionlink]
+ [![Build Status][travis]][travislink]  [![Coverage Status][coveralls]][coverallslink] [![Documentation Status](https://readthedocs.org/projects/palpao/badge/?version=latest)](https://palpao.readthedocs.io/en/latest/?badge=latest) [![PyPI version][pypiversion]][pypiversionlink]
+
 
 This is part a component of the Plico framework to control DMs (Alpao, MEMS)
 
 
-[plico]: https://github.com/lbusoni/plico
-[pysilico]: https://github.com/lbusoni/pysilico
+[plico]: https://github.com/ArcetriAdaptiveOptics/plico
+[pysilico]: https://github.com/ArcetriAdaptiveOptics/pysilico
 [allied]: https://www.alliedvision.com
-[travis]: https://travis-ci.com/lbusoni/palpao.svg?branch=master "go to travis"
-[travislink]: https://travis-ci.com/lbusoni/palpao
-[coveralls]: https://coveralls.io/repos/github/lbusoni/palpao/badge.svg?branch=master "go to coveralls"
-[coverallslink]: https://coveralls.io/github/lbusoni/palpao
+[travis]: https://travis-ci.com/ArcetriAdaptiveOptics/palpao.svg?branch=master "go to travis"
+[travislink]: https://travis-ci.com/ArcetriAdaptiveOptics/palpao
+[coveralls]: https://coveralls.io/repos/github/ArcetriAdaptiveOptics/palpao/badge.svg?branch=master "go to coveralls"
+[coverallslink]: https://coveralls.io/github/ArcetriAdaptiveOptics/palpao
 [pypiversion]: https://badge.fury.io/py/palpao.svg
 [pypiversionlink]: https://badge.fury.io/py/palpao
 
