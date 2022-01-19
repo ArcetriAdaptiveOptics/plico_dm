@@ -11,7 +11,7 @@ from palpao.types.modal_basis import ModalBasis
 
 class CalibrationManagerTest(unittest.TestCase):
 
-    CALIB_DIR = "./calib_tmp"
+    CALIB_DIR = os.path.join(os.getcwd(), 'calib_tmp')
 
     def _removeCalibrationDir(self):
         if os.path.exists(self.CALIB_DIR):
