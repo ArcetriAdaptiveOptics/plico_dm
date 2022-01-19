@@ -9,46 +9,42 @@ from palpao.calibration.calibration_manager import CalibrationManager,\
 from palpao.types.modal_basis import ModalBasis
 
 
-__version__= "$Id: calibration_manager_test.py 26 2018-01-26 19:06:25Z lbusoni $"
-
-
 class CalibrationManagerTest(unittest.TestCase):
 
-    CALIB_DIR= "./calib_tmp"
-
+    CALIB_DIR = "./calib_tmp"
 
     def _removeCalibrationDir(self):
         if os.path.exists(self.CALIB_DIR):
             shutil.rmtree(self.CALIB_DIR)
 
-
     def setUp(self):
         self._removeCalibrationDir()
-        self.calibMgr= CalibrationManager(self.CALIB_DIR)
-
+        self.calibMgr = CalibrationManager(self.CALIB_DIR)
 
     def tearDown(self):
         self._removeCalibrationDir()
 
-
     def _createModalBasis(self):
         return ModalBasis(np.arange(6).reshape((3, 2)))
 
+    def test_all(self):
+        self._testStorageOfModalBasis()
+        self._testStorageOfZonalCommand()
+        self._testInvalidTag()
 
-    def testStorageOfModalBasis(self):
-        result= self._createModalBasis()
+    def _testStorageOfModalBasis(self):
+        result = self._createModalBasis()
 
         self.calibMgr.saveModalBasis("foo", result)
         self.assertTrue(os.path.exists(
             os.path.join(self.CALIB_DIR, "modal_basis", "foo.fits")))
 
-        loaded= self.calibMgr.loadModalBasis("foo")
+        loaded = self.calibMgr.loadModalBasis("foo")
         self.assertTrue(np.array_equal(
             result.modalToZonalMatrix, loaded.modalToZonalMatrix))
 
-
-    def testInvalidTag(self):
-        res= self._createModalBasis()
+    def _testInvalidTag(self):
+        res = self._createModalBasis()
         self.assertRaises(
             CalibrationManagerException,
             self.calibMgr.saveModalBasis,
@@ -65,20 +61,16 @@ class CalibrationManagerTest(unittest.TestCase):
             CalibrationManagerException,
             self.calibMgr.loadModalBasis, "")
 
-
-    def testStorageOfZonalCommand(self):
-        result= np.random.rand(100)
+    def _testStorageOfZonalCommand(self):
+        result = np.random.rand(100)
 
         self.calibMgr.saveZonalCommand("abc", result)
         self.assertTrue(os.path.exists(
             os.path.join(self.CALIB_DIR, "zonal_command", "abc.fits")))
 
-        loaded= self.calibMgr.loadZonalCommand("abc")
+        loaded = self.calibMgr.loadZonalCommand("abc")
         self.assertTrue(np.array_equal(
             result, loaded))
-
-
-
 
 
 if __name__ == "__main__":

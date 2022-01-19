@@ -7,7 +7,7 @@ from setuptools import setup, Command
 
 NAME = 'palpao'
 DESCRIPTION = 'ALPAO, Boston MEMS, Physik Instrument Deformable mirrors interface'
-URL = 'https://github.com/lbusoni/palpao'
+URL = 'https://github.com/lbusoni/plico_dm'
 EMAIL = 'lorenzo.busoni@inaf.it'
 AUTHOR = 'Lorenzo Busoni'
 LICENSE = 'MIT'
