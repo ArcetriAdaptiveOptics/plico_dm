@@ -22,7 +22,10 @@ class CalibrationManagerTest(unittest.TestCase):
         self.calibMgr = CalibrationManager(self.CALIB_DIR)
 
     def tearDown(self):
-        self._removeCalibrationDir()
+        try:
+            self._removeCalibrationDir()
+        except Exception:
+            pass
 
     def _createModalBasis(self):
         return ModalBasis(np.arange(6).reshape((3, 2)))

@@ -41,7 +41,7 @@ class CalibrationManager(AbstractCalibrationManager,
         self._createFoldersIfMissing(fileName)
         pyfits.writeto(fileName,
                        modalBasis.modalToZonalMatrix,
-                       clobber=False)
+                       overwrite=False)
 
     @override
     @returns(ModalBasis)
@@ -81,7 +81,7 @@ class CalibrationManager(AbstractCalibrationManager,
         self._createFoldersIfMissing(fileName)
         pyfits.writeto(fileName,
                        zonalCommand,
-                       clobber=False)
+                       overwrite=False)
 
     @override
     @returns(numpy.ndarray)
