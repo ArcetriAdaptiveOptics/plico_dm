@@ -6,7 +6,7 @@ from shutil import rmtree
 from setuptools import setup, Command
 
 NAME = 'palpao'
-DESCRIPTION = 'ALPAO, Boston MEMS, Physik Instrument Deformable mirrors interface'
+DESCRIPTION = 'Interface to ALPAO and Boston MEMS deformable mirrors and Physik Instrumente tip tilt mirror'
 URL = 'https://github.com/lbusoni/plico_dm'
 EMAIL = 'lorenzo.busoni@inaf.it'
 AUTHOR = 'Lorenzo Busoni'
@@ -40,19 +40,19 @@ class UploadCommand(Command):
 
     def run(self):
         try:
-            self.status('Removing previous builds…')
+            self.status('Removing previous builds...')
             rmtree(os.path.join(here, 'dist'))
         except OSError:
             pass
 
-        self.status('Building Source and Wheel (universal) distribution…')
+        self.status('Building Source and Wheel (universal) distribution...')
         os.system(
             '{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
 
-        self.status('Uploading the package to PyPI via Twine…')
+        self.status('Uploading the package to PyPI via Twine...')
         os.system('twine upload dist/*')
 
-        self.status('Pushing git tags…')
+        self.status('Pushing git tags...')
         os.system('git tag v{0}'.format(about['__version__']))
         os.system('git push --tags')
 
@@ -65,8 +65,7 @@ setup(name=NAME,
       classifiers=['Development Status :: 4 - Beta',
                    'Operating System :: POSIX :: Linux',
                    'Programming Language :: Python :: 2.7',
-                   'Programming Language :: Python :: 3.5',
-                   'Programming Language :: Python :: 3.6',
+                   'Programming Language :: Python :: 3',
                    ],
       long_description="A python interface to adaptive optics deformable mirrors",
       url=URL,
