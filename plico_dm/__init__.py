@@ -1,5 +1,5 @@
-from palpao.types.deformable_mirror_status import DeformableMirrorStatus
-from palpao.utils.constants import Constants
+from plico_dm.types.deformable_mirror_status import DeformableMirrorStatus
+from plico_dm.utils.constants import Constants
 
 
 def _getDefaultConfigFilePath():
@@ -16,7 +16,7 @@ defaultConfigFilePath= _getDefaultConfigFilePath()
 
 def deformableMirror(hostname, port):
 
-    from palpao.client.deformable_mirror_client import DeformableMirrorClient
+    from plico_dm.client.deformable_mirror_client import DeformableMirrorClient
     from plico.rpc.zmq_remote_procedure_call import ZmqRemoteProcedureCall
     from plico.rpc.zmq_ports import ZmqPorts
     from plico.rpc.sockets import Sockets

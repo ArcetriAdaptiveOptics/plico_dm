@@ -2,9 +2,9 @@
 
 import unittest
 import numpy as np
-from palpao.calibration.in_memory_calibration_manager import \
+from plico_dm.calibration.in_memory_calibration_manager import \
     InMemoryCalibrationManager
-from palpao.types.modal_basis import ModalBasis
+from plico_dm.types.modal_basis import ModalBasis
 
 
 

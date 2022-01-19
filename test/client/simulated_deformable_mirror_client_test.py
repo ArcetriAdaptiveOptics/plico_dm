@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import unittest
 import numpy as np
-from palpao.client.simulated_deformable_mirror_client import \
+from plico_dm.client.simulated_deformable_mirror_client import \
     SimulatedDeformableMirrorClient
 from test.fake_time_mod import FakeTimeMod
 

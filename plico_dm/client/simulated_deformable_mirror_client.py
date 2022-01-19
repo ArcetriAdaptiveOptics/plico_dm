@@ -1,10 +1,10 @@
 import numpy as np
 from plico.utils.decorator import override, returns
-from palpao.client.abstract_deformable_mirror_client import \
+from plico_dm.client.abstract_deformable_mirror_client import \
     AbstractDeformableMirrorClient
-from palpao.utils.timeout import Timeout
+from plico_dm.utils.timeout import Timeout
 import time
-from palpao.types.deformable_mirror_status import DeformableMirrorStatus
+from plico_dm.types.deformable_mirror_status import DeformableMirrorStatus
 
 
 

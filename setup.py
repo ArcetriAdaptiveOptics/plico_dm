@@ -5,7 +5,7 @@ from shutil import rmtree
 
 from setuptools import setup, Command
 
-NAME = 'palpao'
+NAME = 'plico_dm'
 DESCRIPTION = 'Interface to ALPAO and Boston MEMS deformable mirrors and Physik Instrumente tip tilt mirror'
 URL = 'https://github.com/lbusoni/plico_dm'
 EMAIL = 'lorenzo.busoni@inaf.it'
@@ -73,11 +73,11 @@ setup(name=NAME,
       author=AUTHOR,
       license=LICENSE,
       keywords=KEYWORDS,
-      packages=['palpao',
-                'palpao.calibration',
-                'palpao.client',
-                'palpao.types',
-                'palpao.utils',
+      packages=['plico_dm',
+                'plico_dm.calibration',
+                'plico_dm.client',
+                'plico_dm.types',
+                'plico_dm.utils',
                 ],
       entry_points={
           'gui_scripts': [
