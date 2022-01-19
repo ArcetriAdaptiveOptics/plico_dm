@@ -10,8 +10,8 @@ DESCRIPTION = 'ALPAO, Boston MEMS, Physik Instrument Deformable mirrors interfac
 URL = 'https://github.com/lbusoni/palpao'
 EMAIL = 'lorenzo.busoni@inaf.it'
 AUTHOR = 'Lorenzo Busoni'
-LICENSE= 'MIT'
-KEYWORDS= 'plico, deformable mirror, ALPAO, Boston MEMS, Physik Instrument, piezo, laboratory, instrumentation control',
+LICENSE = 'MIT'
+KEYWORDS = 'plico, deformable mirror, ALPAO, Boston MEMS, Physik Instrument, piezo, laboratory, instrumentation control',
 
 
 here = os.path.abspath(os.path.dirname(__file__))
@@ -19,7 +19,6 @@ here = os.path.abspath(os.path.dirname(__file__))
 about = {}
 with open(os.path.join(here, NAME, '__version__.py')) as f:
     exec(f.read(), about)
-
 
 
 class UploadCommand(Command):
@@ -47,7 +46,8 @@ class UploadCommand(Command):
             pass
 
         self.status('Building Source and Wheel (universal) distribution…')
-        os.system('{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
+        os.system(
+            '{0} setup.py sdist bdist_wheel --universal'.format(sys.executable))
 
         self.status('Uploading the package to PyPI via Twine…')
         os.system('twine upload dist/*')
@@ -68,7 +68,7 @@ setup(name=NAME,
                    'Programming Language :: Python :: 3.5',
                    'Programming Language :: Python :: 3.6',
                    ],
-      long_description=open('README.md').read(),
+      long_description="A python interface to adaptive optics deformable mirrors",
       url=URL,
       author_email=EMAIL,
       author=AUTHOR,
@@ -86,15 +86,10 @@ setup(name=NAME,
       },
       package_data={
       },
-      install_requires=["plico>=0.15",
+      install_requires=["plico>=0.20",
                         "numpy",
-                        "psutil",
-                        "configparser",
                         "six",
-                        "appdirs",
-                        "pyfits",
-                        "futures",
-                        "pathlib2; python_version < '3'"
+                        "astropy",
                         ],
       include_package_data=True,
       test_suite='test',
