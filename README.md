@@ -4,7 +4,7 @@
  ![Python package](https://github.com/ArcetriAdaptiveOptics/plico_dm/workflows/Python%20package/badge.svg)
  [![codecov](https://codecov.io/gh/ArcetriAdaptiveOptics/plico_dm/branch/main/graph/badge.svg?token=ApWOrs49uw)](https://codecov.io/gh/ArcetriAdaptiveOptics/plico_dm)
  [![Documentation Status](https://readthedocs.org/projects/plico_dm/badge/?version=latest)](https://plico_dm.readthedocs.io/en/latest/?badge=latest)
- [![PyPI version](https://badge.fury.io/py/plico_dm.svg)](https://badge.fury.io/py/plico_dm)
+ [![PyPI version](https://badge.fury.io/py/plico-dm.svg)](https://badge.fury.io/py/plico-dm)
 
 
 This is part a component of the [plico][plico] framework to control DMs (Alpao, MEMS)
