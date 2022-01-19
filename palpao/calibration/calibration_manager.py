@@ -50,7 +50,9 @@ class CalibrationManager(AbstractCalibrationManager,
         self._checkTag(tag)
         fileName = self.getModalBasisFileName(tag)
         hduList = pyfits.open(fileName)
-        return ModalBasis(hduList[0].data)
+        ret = ModalBasis(hduList[0].data)
+        hduList.close()
+        return ret
 
     def getPiTipTiltCalibrationFileName(self):
         return os.path.join(self._calibRootDir,
