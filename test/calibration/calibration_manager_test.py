@@ -4,9 +4,9 @@ import unittest
 import shutil
 
 import numpy as np
-from palpao.calibration.calibration_manager import CalibrationManager,\
+from plico_dm.calibration.calibration_manager import CalibrationManager,\
     CalibrationManagerException
-from palpao.types.modal_basis import ModalBasis
+from plico_dm.types.modal_basis import ModalBasis
 
 
 class CalibrationManagerTest(unittest.TestCase):

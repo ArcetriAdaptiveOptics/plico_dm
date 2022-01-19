@@ -4,9 +4,9 @@ import numpy as np
 from plico.utils.decorator import override
 from plico.rpc.dummy_remote_procedure_call import DummyRpcHandler
 from plico.rpc.dummy_sockets import DummySockets
-from palpao.client.deformable_mirror_client import DeformableMirrorClient
-from palpao.utils.timeout import Timeout
-from palpao.types.deformable_mirror_status import DeformableMirrorStatus
+from plico_dm.client.deformable_mirror_client import DeformableMirrorClient
+from plico_dm.utils.timeout import Timeout
+from plico_dm.types.deformable_mirror_status import DeformableMirrorStatus
 
 
 

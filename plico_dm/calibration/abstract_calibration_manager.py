@@ -1,6 +1,6 @@
 import abc
 from plico.utils.decorator import returns, returnsNone
-from palpao.types.modal_basis import ModalBasis
+from plico_dm.types.modal_basis import ModalBasis
 from six import with_metaclass
 import numpy
 

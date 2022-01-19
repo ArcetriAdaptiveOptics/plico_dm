@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 
 from plico.client.hackerable_client import HackerableClient
-from palpao.client.abstract_deformable_mirror_client import \
+from plico_dm.client.abstract_deformable_mirror_client import \
     AbstractDeformableMirrorClient
 from plico.rpc.abstract_remote_procedure_call import \
     AbstractRemoteProcedureCall
 from plico.utils.logger import Logger
 from plico.utils.decorator import override, returns
-from palpao.utils.timeout import Timeout
-from palpao.types.deformable_mirror_status import DeformableMirrorStatus
+from plico_dm.utils.timeout import Timeout
+from plico_dm.types.deformable_mirror_status import DeformableMirrorStatus
 from plico.client.serverinfo_client import ServerInfoClient
 
 

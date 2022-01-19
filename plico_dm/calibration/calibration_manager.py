@@ -1,10 +1,10 @@
 
 import os
 import astropy.io.fits as pyfits
-from palpao.calibration.abstract_calibration_manager import \
+from plico_dm.calibration.abstract_calibration_manager import \
     AbstractCalibrationManager
 from plico.utils.decorator import override, returnsNone, returns, cacheResult
-from palpao.types.modal_basis import ModalBasis
+from plico_dm.types.modal_basis import ModalBasis
 import numpy
 from plico.utils.fits_file_based_calibration_manager \
     import FitsFileBasedCalibrationManager

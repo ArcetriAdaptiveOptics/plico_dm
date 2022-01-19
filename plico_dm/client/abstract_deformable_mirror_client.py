@@ -1,6 +1,6 @@
 import abc
 from plico.utils.decorator import returnsNone, returns, returnsForExample
-from palpao.types.deformable_mirror_status import DeformableMirrorStatus
+from plico_dm.types.deformable_mirror_status import DeformableMirrorStatus
 from six import with_metaclass
 
 

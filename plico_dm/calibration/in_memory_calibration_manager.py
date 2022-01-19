@@ -1,6 +1,6 @@
 from plico.utils.decorator import override, returnsNone, returns
-from palpao.types.modal_basis import ModalBasis
-from palpao.calibration.abstract_calibration_manager import \
+from plico_dm.types.modal_basis import ModalBasis
+from plico_dm.calibration.abstract_calibration_manager import \
     AbstractCalibrationManager
 import numpy
 

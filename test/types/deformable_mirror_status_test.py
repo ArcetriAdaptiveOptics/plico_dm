@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import unittest
 import numpy as np
-from palpao.types.deformable_mirror_status import DeformableMirrorStatus
+from plico_dm.types.deformable_mirror_status import DeformableMirrorStatus
 
 
 
