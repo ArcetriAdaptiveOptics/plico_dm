@@ -1,38 +1,20 @@
 
 
-
 class DeformableMirrorStatus(object):
 
     def __init__(self,
-                 numberOfActuators,
-                 numberOfModes,
-                 actuatorCommands,
-                 commandCounter):
-        self._numberOfActuators= numberOfActuators
-        self._numberOfModes= numberOfModes
-        self._actuatorCommands= actuatorCommands
-        self._commandCounter= commandCounter
-
-
-    def commandCounter(self):
-        return self._commandCounter
-
-
-    def actuatorCommands(self):
-        return self._actuatorCommands
-
-
-    def numberOfActuators(self):
-        return self._numberOfActuators
-
-
-    def numberOfModes(self):
-        return self._numberOfModes
-
+                 number_of_actuators,
+                 number_of_modes,
+                 command_counter,
+                 reference_command_tag):
+        self.number_of_actuators = number_of_actuators
+        self.number_of_modes = number_of_modes
+        self.command_counter = command_counter
+        self.reference_command_tag = reference_command_tag
 
     def __repr__(self):
-        stra= "Number of Actuators: %s - " % self.numberOfActuators()
-        stra+= "Number of Modes: %s - " % self.numberOfModes()
-        stra+= "Actuator commands: %s - " % self.actuatorCommands()
-        stra+= "command counter: %s" % self.commandCounter()
+        stra = "Number of Actuators: %s - " % self.number_of_actuators
+        stra += "Number of Modes: %s - " % self.number_of_modes
+        stra += "command counter: %s" % self.command_counter
+        stra += "reference command tag: %s" % self.reference_command_tag
         return stra

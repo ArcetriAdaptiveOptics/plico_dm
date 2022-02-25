@@ -12,8 +12,6 @@ from plico_dm.types.deformable_mirror_status import DeformableMirrorStatus
 from plico.client.serverinfo_client import ServerInfoClient
 
 
-
-
 class DeformableMirrorClient(AbstractDeformableMirrorClient,
                              HackerableClient, ServerInfoClient):
 
@@ -22,10 +20,10 @@ class DeformableMirrorClient(AbstractDeformableMirrorClient,
                  sockets):
         assert isinstance(rpcHandler, AbstractRemoteProcedureCall)
 
-        self._rpcHandler= rpcHandler
-        self._requestSocket= sockets.serverRequest()
-        self._statusSocket= sockets.serverStatus()
-        self._logger= Logger.of('DeformableMirrorClient')
+        self._rpcHandler = rpcHandler
+        self._requestSocket = sockets.serverRequest()
+        self._statusSocket = sockets.serverStatus()
+        self._logger = Logger.of('DeformableMirrorClient')
 
         HackerableClient.__init__(self,
                                   self._rpcHandler,
@@ -36,83 +34,110 @@ class DeformableMirrorClient(AbstractDeformableMirrorClient,
                                   self._requestSocket,
                                   self._logger)
 
-
     @override
-    def enableControlLoop(self,
-                          boolEnableOrDisable,
-                          timeoutInSec=Timeout.GENERIC_COMMAND):
+    def enable_control_loop(self,
+                            boolEnableOrDisable,
+                            timeoutInSec=Timeout.GENERIC_COMMAND):
         return self._rpcHandler.sendRequest(
             self._requestSocket,
-            'enableControlLoop', [boolEnableOrDisable],
+            'enable_control_loop', [boolEnableOrDisable],
             timeout=timeoutInSec)
 
-
-
     @override
-    def loadShapeSequence(self,
-                          shapeSequence,
-                          timeStepInSeconds,
-                          timeoutInSec=Timeout.GENERIC_COMMAND):
+    def load_shape_sequence(self,
+                            shapeSequence,
+                            timeStepInSeconds,
+                            timeoutInSec=Timeout.GENERIC_COMMAND):
         return self._rpcHandler.sendRequest(
             self._requestSocket,
             'loadShapeSequence', [shapeSequence, timeStepInSeconds],
             timeout=timeoutInSec)
 
-
     @override
-    def startShapeSequence(self,
-                           timeoutInSec=Timeout.GENERIC_COMMAND):
+    def start_shape_sequence(self,
+                             timeoutInSec=Timeout.GENERIC_COMMAND):
         return self._rpcHandler.sendRequest(
             self._requestSocket,
             'startShapeSequence', [],
             timeout=timeoutInSec)
 
-
     @override
-    def stopShapeSequence(self,
-                          timeoutInSec=Timeout.GENERIC_COMMAND):
+    def stop_shape_sequence(self,
+                            timeoutInSec=Timeout.GENERIC_COMMAND):
         return self._rpcHandler.sendRequest(
             self._requestSocket,
             'stopShapeSequence', [],
             timeout=timeoutInSec)
 
-
     @override
-    def setShape(self,
-                 command,
-                 timeoutInSec=Timeout.MIRROR_SET_SHAPE):
+    def set_shape(self,
+                  command,
+                  timeoutInSec=Timeout.MIRROR_SET_SHAPE):
         return self._rpcHandler.sendRequest(
             self._requestSocket,
             'setShape', [command],
             timeout=timeoutInSec)
 
-
     @override
-    def getShape(self, timeoutInSec=Timeout.MIRROR_GET_SHAPE):
+    def get_shape(self, timeoutInSec=Timeout.MIRROR_GET_SHAPE):
         return self._rpcHandler.sendRequest(
             self._requestSocket,
             'getShape', [],
             timeout=timeoutInSec)
 
+    @override
+    def get_number_of_modes(self, timeoutInSec=Timeout.GENERIC_COMMAND):
+        return int(self.get_status(timeoutInSec).number_of_modes)
 
     @override
-    def getNumberOfModes(self, timeoutInSec=Timeout.GENERIC_COMMAND):
-        return int(self.getStatus(timeoutInSec).numberOfModes())
-
+    def get_number_of_actuators(self, timeoutInSec=Timeout.GENERIC_COMMAND):
+        return int(self.get_status(timeoutInSec).number_of_actuators)
 
     @override
     @returns(DeformableMirrorStatus)
-    def getStatus(self, timeoutInSec=Timeout.MIRROR_GET_STATUS):
+    def get_status(self, timeoutInSec=Timeout.MIRROR_GET_STATUS):
         return self._rpcHandler.receivePickable(
             self._statusSocket,
             timeoutInSec)
 
-
     @override
-    def getSnapshot(self,
-                    prefix,
-                    timeoutInSec=Timeout.MIRROR_GET_STATUS):
+    def get_snapshot(self,
+                     prefix,
+                     timeoutInSec=Timeout.MIRROR_GET_STATUS):
         return self._rpcHandler.sendRequest(
             self._requestSocket,
             'getSnapshot', [prefix],
             timeout=timeoutInSec)
+
+    @override
+    def save_current_shape_as_reference(
+            self,
+            tag,
+            timeoutInSec=Timeout.MIRROR_GET_STATUS):
+        return self._rpcHandler.sendRequest(
+            self._requestSocket,
+            'save_current_shape_as_reference', [tag],
+            timeout=timeoutInSec)
+
+    @override
+    def load_reference(
+            self,
+            tag,
+            timeoutInSec=Timeout.MIRROR_GET_STATUS):
+        return self._rpcHandler.sendRequest(
+            self._requestSocket,
+            'load_reference', [tag],
+            timeout=timeoutInSec)
+
+    @override
+    def get_reference_shape(
+            self,
+            timeoutInSec=Timeout.MIRROR_GET_STATUS):
+        return self._rpcHandler.sendRequest(
+            self._requestSocket,
+            'get_reference_shape', [],
+            timeout=timeoutInSec)
+
+    @override
+    def get_reference_shape_tag(self, timeoutInSec=Timeout.GENERIC_COMMAND):
+        return self.get_status(timeoutInSec).reference_command_tag

@@ -4,13 +4,10 @@ from plico_dm.types.deformable_mirror_status import DeformableMirrorStatus
 from six import with_metaclass
 
 
-
-
 class SnapshotEntry(object):
-    COMMAND_COUNTER= "COMMAND_COUNTER"
-    SERIAL_NUMBER= "SERIAL_NUMBER"
-    STEP_COUNTER= "STEP_COUNTER"
-
+    COMMAND_COUNTER = "COMMAND_COUNTER"
+    SERIAL_NUMBER = "SERIAL_NUMBER"
+    STEP_COUNTER = "STEP_COUNTER"
 
 
 class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
@@ -23,7 +20,7 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
     """
 
     @abc.abstractmethod
-    def getNumberOfModes(self):
+    def get_number_of_modes(self):
         """ Number of modes of the deformable mirror
 
         Return the number of modes of the deformable mirror.
@@ -34,10 +31,20 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
         """
         assert False
 
+    @abc.abstractmethod
+    def get_number_of_actuators(self):
+        """ Number of actuators of the deformable mirror
+
+        Return the number of actuators of the deformable mirror.
+
+        Return:
+            numberOfActuators (int): the number of actuators of the deformable mirror.
+        """
+        assert False
 
     @abc.abstractmethod
     @returnsNone
-    def setShape(self, command):
+    def set_shape(self, command):
         """ Set Deformable Mirror Shape
 
         Send to the controller the request to set the DM shape
@@ -50,13 +57,12 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
         """
         assert False
 
-
     @abc.abstractmethod
     @returnsNone
-    def getShape(self):
+    def get_shape(self):
         """ Get Deformable Mirror Shape
 
-        Send to the controller the request to set the DM shape
+        Get the current DM shape, reference subtracted
 
         Return:
             shape (:obj:ndarray): an array containing the measured value for the actuators/modes
@@ -68,9 +74,8 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
         """
         assert False
 
-
     @abc.abstractmethod
-    def loadShapeSequence(self, shapeSequence, timeStepInSeconds):
+    def load_shape_sequence(self, shapeSequence, timeStepInSeconds):
         """ Load a shape sequence to be applied to the mirror
 
         Every element of the sequence correspond to a DM shape
@@ -88,22 +93,19 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
         """
         assert False
 
-
     @abc.abstractmethod
     @returnsNone
-    def startShapeSequence(self):
+    def start_shape_sequence(self):
         assert False
 
-
     @abc.abstractmethod
     @returnsNone
-    def stopShapeSequence(self):
+    def stop_shape_sequence(self):
         assert False
 
-
     @abc.abstractmethod
     @returnsNone
-    def enableControlLoop(self, boolEnableOrDisable):
+    def enable_control_loop(self, boolEnableOrDisable):
         """ Enable control loop
 
         If the deformable mirror controller has position feedback, 
@@ -112,14 +114,28 @@ class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
         """
         assert False
 
-
     @abc.abstractmethod
     @returnsForExample({'WFS_CAMERA.EXPOSURE_TIME_MS': 10})
-    def getSnapshot(self, prefix):
+    def get_snapshot(self, prefix):
         assert False
-
 
     @abc.abstractmethod
     @returns(DeformableMirrorStatus)
-    def getStatus(self):
+    def get_status(self):
+        assert False
+
+    @abc.abstractmethod
+    def save_current_shape_as_reference(self, tag):
+        assert False
+
+    @abc.abstractmethod
+    def load_reference(self, tag):
+        assert False
+
+    @abc.abstractmethod
+    def get_reference_shape(self):
+        assert False
+
+    @abc.abstractmethod
+    def get_reference_shape_tag(self):
         assert False
