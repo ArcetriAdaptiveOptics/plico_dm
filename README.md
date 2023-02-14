@@ -12,6 +12,10 @@ This is part a component of the [plico][plico] framework to control DMs (Alpao, 
 
 [plico]: https://github.com/ArcetriAdaptiveOptics/plico
 
+## Drivers
+The drivers for the mirrors whose control software was developed in plico_dm can be found [here].
+
+[here]: https://drive.google.com/drive/folders/1wjaBlFTa_893L_LjJgfgYH6o3rhrh1VR 
 
 ## Installation
 
@@ -63,6 +67,16 @@ plico_dm.defaultConfigFilePath
 The user can specify customized conf/calib/log file path for both
 servers and client (how? ask!)
 
+## How to use it
 
+Open a terminal and execute the following commands
+```
+import plico_dm
+dm =  plico_dm.deformableMirror(hostServer, portServer)
+```
 
+These are the basic commands available:
+- dm.get_shape(): return the actuator positions
+- dm.set_shape(): set the absolute actuator positions
+- dm.get_number_of_actuators(): return the DM numbers of actuators
 
