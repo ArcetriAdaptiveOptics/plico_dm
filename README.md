@@ -17,10 +17,9 @@ This is part a component of the [plico][plico] framework to control DMs (Alpao, 
 
 ### Installing
 
-From the wheel
 
 ```
-pip install plico_dm-XXX.whl
+pip install plico_dm
 ```
 
 In plico_dm source dir
