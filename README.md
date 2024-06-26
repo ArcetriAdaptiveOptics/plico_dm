@@ -1,7 +1,7 @@
 # plico_dm: deformable mirror controller 
 
 
- ![Python package](https://github.com/ArcetriAdaptiveOptics/plico_dm/workflows/Python%20package/badge.svg)
+ ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/ArcetriAdaptiveOptics/plico_dm/python-package.yml)
  [![codecov](https://codecov.io/gh/ArcetriAdaptiveOptics/plico_dm/branch/main/graph/badge.svg?token=ApWOrs49uw)](https://codecov.io/gh/ArcetriAdaptiveOptics/plico_dm)
  [![Documentation Status](https://readthedocs.org/projects/plico_dm/badge/?version=latest)](https://plico_dm.readthedocs.io/en/latest/?badge=latest)
  [![PyPI version](https://badge.fury.io/py/plico-dm.svg)](https://badge.fury.io/py/plico-dm)
