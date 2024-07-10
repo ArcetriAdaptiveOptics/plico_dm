@@ -85,7 +85,7 @@ setup(name=NAME,
       },
       package_data={
       },
-      install_requires=["plico>=0.20",
+      install_requires=["plico>=0.28",
                         "numpy",
                         "six",
                         "astropy",
