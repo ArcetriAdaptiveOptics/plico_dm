@@ -1,4 +1,7 @@
-from plico_dm.types.deformable_mirror_status import DeformableMirrorStatus
+
+from plico.client.discovery import plico_list, plico_get, plico_client
+from plico_dm.client.client_map import client_map
+from plico_dm.client.deformable_mirror_client import DeformableMirrorClient
 from plico_dm.utils.constants import Constants
 
 
@@ -14,25 +17,17 @@ defaultConfigFilePath= _getDefaultConfigFilePath()
 
 
 def deformableMirror(hostname, port):
-
-    from plico_dm.client.deformable_mirror_client import DeformableMirrorClient
-    from plico.rpc.zmq_remote_procedure_call import ZmqRemoteProcedureCall
-    from plico.rpc.zmq_ports import ZmqPorts
-    from plico.rpc.sockets import Sockets
-
-    rpc= ZmqRemoteProcedureCall()
-    zmqPorts= ZmqPorts(hostname, port)
-    sockets= Sockets(zmqPorts, rpc)
-    return DeformableMirrorClient(rpc, sockets)
+    '''Generic DeformableMirrorClient, kept for backward compatibility'''
+    return plico_client(DeformableMirrorClient, hostname, port)
 
 
 def list_dms(timeout_in_seconds=2):
-    from plico.utils.discovery_server import DiscoveryClient
-    return DiscoveryClient().run(timeout_in_seconds=timeout_in_seconds, filter={'server_type':'plico_dm'})
+    '''List all available plico DM servers'''
+    return plico_list(server_type='plico_dm', timeout_in_seconds=timeout_in_seconds)
 
 
-def find(dm_name, timeout_in_seconds=2):
-    from plico.utils.discovery_server import DiscoveryClient
-    server_info = DiscoveryClient().run(dm_name, timeout_in_seconds, filter={'server_type':'plico_dm'})
-    return deformableMirror(server_info.host, server_info.port)
+def get(dm_name, timeout_in_seconds=2):
+    '''Get a client for a specific DM server'''
+    return plico_get(server_type='plico_dm', name=dm_name, default_class=DeformableMirrorClient,
+               timeout_in_seconds=timeout_in_seconds, client_map=client_map)
 
