@@ -8,6 +8,7 @@ class SnapshotEntry(object):
     COMMAND_COUNTER = "COMMAND_COUNTER"
     SERIAL_NUMBER = "SERIAL_NUMBER"
     STEP_COUNTER = "STEP_COUNTER"
+    REFERENCE_COMMAND_TAG = "REFERENCE_COMMAND_TAG"
 
 
 class AbstractDeformableMirrorClient(with_metaclass(abc.ABCMeta, object)):
