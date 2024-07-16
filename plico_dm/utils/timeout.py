@@ -6,3 +6,5 @@ class Timeout(object):
     MIRROR_GET_STATUS= 3.
     MIRROR_GET_SHAPE= 3.
     MIRROR_SET_SHAPE= 3.
+    SPLATT_COMMAND = 10.
+    SPLATT_SET = 120.
