@@ -141,3 +141,9 @@ class DeformableMirrorClient(AbstractDeformableMirrorClient,
     @override
     def get_reference_shape_tag(self, timeoutInSec=Timeout.GENERIC_COMMAND):
         return self.get_status(timeoutInSec).reference_command_tag
+
+    def is_ready(self, timeoutInSec=Timeout.GENERIC_COMMAND):
+        return self._rpcHandler.sendRequest(
+            self._requestSocket,
+            'isReady', [],
+            timeout=timeoutInSec)
