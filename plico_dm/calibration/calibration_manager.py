@@ -57,9 +57,15 @@ class CalibrationManager(AbstractCalibrationManager,
                             "modulator/pi_calibration.py")
 
     def _loadPiTipTiltCalibrationModule(self):
-        import imp
-        mm = imp.load_source('pi_calibration',
-                             self.getPiTipTiltCalibrationFileName())
+        # Python 3.12+ removed the imp module; load calib .py via importlib.
+        import importlib.util
+        path = self.getPiTipTiltCalibrationFileName()
+        spec = importlib.util.spec_from_file_location('pi_calibration', path)
+        if spec is None or spec.loader is None:
+            raise CalibrationManagerException(
+                "Cannot load PI tip-tilt calibration from %s" % path)
+        mm = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mm)
         return mm.PhysikInstrumenteCalibration()
 
     @override
